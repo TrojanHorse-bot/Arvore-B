@@ -5,9 +5,19 @@
 # Mas não precisa se não quiser
 # Tutorial do makefile: https://embarcados.com.br/introducao-ao-makefile/
 
-all: # all gera todos os binários. Colocar tanto os sideapps quanto a árvore-B aqui nas dependências.
+CC = gcc
+CFLAGS = -std=c99 -Wall -Wextra -g
+
+all: RegisterMaker.out # all gera todos os binários e objetos. Colocar tanto os sideapps quanto a árvore-B aqui nas dependências.
+
+RegisterMaker.out: 
+	$(CC) $(CFLAGS) ./sideapps/RegisterMaker.c -o RegisterMaker.out
+
 
 .PHONY : clean
-clean: # Limpa todos os binários dessa pasta.
+clean: # Limpa todos os binários e objetos dessa pasta.
 	rm -rf *.o *.exe *.out
 
+veryclean: clean # Limpa todos os binários, objetos e resultados
+	find . -name "*.txt" -delete
+	find . -name "*.o" -delete
