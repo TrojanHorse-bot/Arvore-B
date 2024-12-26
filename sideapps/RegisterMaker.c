@@ -1,9 +1,5 @@
-/* Dados Gerenciados: Cada registro deve incluir:
-• Chave (ID): Inteira e única. - ok
-• Atributos adicionais: Nome (string),  - ok
-Data de criação (timestamp) - ok
-e Valor (número decimal).
-*/
+/* Utilidade que gera keys para a árvore-B manipular */
+
 
 #include <stdio.h>
 #include <time.h>
@@ -17,8 +13,6 @@ int main(){
     time_t now;
     struct tm *local_time;
     int currentNum[ENTRY_AMOUNT];
-
-  
 
     inputmess = fopen("./input/input.txt", "w");
 
@@ -38,12 +32,10 @@ int main(){
         local_time = localtime(&now);
 
         fprintf(inputmess, "%d\nDEFAULTNAME_%d\n", i, i);
-        fprintf(inputmess, "%02d:%02d:%02d\n",
-        /*
-            local_time->tm_year + 1900, /// Year since 1900
-            local_time->tm_mon + 1,    /// Month [0-11] + 1
+        fprintf(inputmess, "%02d/%02d/%04d (%02d:%02d:%02d)\n",
             local_time->tm_mday,       /// Day of the month
-        */
+            local_time->tm_mon + 1,    /// Month [0-11] + 1
+            local_time->tm_year + 1900, /// Year since 1900
             local_time->tm_hour,       /// Hour [0-23]
             local_time->tm_min,        /// Minutes [0-59]
             local_time->tm_sec);       /// Seconds [0-59]
