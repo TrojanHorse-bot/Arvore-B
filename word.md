@@ -1,1 +1,0 @@
-trabalho teórico sobre o estudo de árvores e suas variações complexas
